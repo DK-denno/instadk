@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from .models import Posts
 # Create your views here.
 
 def index(request):
@@ -24,3 +25,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'reg.html', {'form': form})
+
+def home(request):
+    post = Posts.Objects.all()
