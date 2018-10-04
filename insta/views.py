@@ -45,4 +45,4 @@ def post(request):
         return redirect('index')
     else:
         form = PostForm()
-        return render(request)
+        return render(request,'edit_profile.html',{"form":form})
