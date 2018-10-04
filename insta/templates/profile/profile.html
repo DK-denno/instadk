@@ -1,42 +1,48 @@
-  {% load bootstrap4 %} {% load staticfiles %}
-<!DOCTYPE html>
-<html>
+{% extends 'base2.html' %}
+{% load bootstrap4 %} {% load staticfiles %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>New Article</title>
-  {{form.media}}
-
-{% block styles %} {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
-
-</head>
-
-<body>
-
-{% if pics %}
-{% for post in pics %}
- {{post.user.username}}
-<img src="{{post.image.url}}"  width='500' height='500' alt="">
-posted {{post.postedOn|timesince}} ago
-{% endfor %}
-{% else %}
-<h1> YOU HAVE POSTED NOTHING</h1>
-{% endif %}
-<form  action="{%url 'profile' %}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
-
-    {% bootstrap_form form%}
-    <input type="submit" class="btn btn-primary btn-lg" value="Post">
-  </form>
+    {% block content %}
+    <div class='container'>
+        <div class='row'>
 
 
-   {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% bootstrap_javascript %} {% endblock %}
+            {% for post in post %}
+            <div class='col-md-4'>
+                <div class="card" style="width: 50%;">
+                    <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.user.username}}</h5>
+                        <p class="card-text">{{post.caption}}</p>
+                    </div>
+                    <div class='card-footer'>
+                        posted {{post.postedOn|timesince}} ago
+                    </div>
+                </div>
+            </div>
 
-</body>
+            {% endfor %}
+        </div>
+    </div>
 
-</html>
+    {% if pics %}
+    {% for post in pics %}
+    {{post.user.username}}
+    <img src="{{post.image.url}}" width='500' height='500' alt="">
+    posted {{post.postedOn|timesince}} ago
+    {% endfor %}
+    {% else %}
+    <h1> YOU HAVE POSTED NOTHING</h1>
+    {% endif %}
+
+    <form action="{%url 'profile' %}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+
+        {% bootstrap_form form%}
+        <input type="submit" class="btn btn-primary btn-lg" value="Post">
+    </form>
+
+
+
+    
+
+    {% endblock %}
