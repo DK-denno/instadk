@@ -9,7 +9,8 @@ from .forms import PostForm
 
 def index(request):
     post = Posts.objects.all()
-    return render(request,'index.html',{"post":post})
+    user = request.user
+    return render(request,'index.html',{"post":post,"user":user})
 
 
 

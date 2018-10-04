@@ -23,6 +23,11 @@ class PostForm(forms.ModelForm):
         exclude = ['user','postedon']
        
 
+
+
+
+
+
 # class PostForm(forms.ModelForm):
 #     class Meta:
 #         model = Posts
