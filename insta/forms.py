@@ -20,7 +20,7 @@ class SignUpForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Posts
-        exclude = ['postedon']
+        exclude = ['user','postedon']
        
 
 # class PostForm(forms.ModelForm):

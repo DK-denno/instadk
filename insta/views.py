@@ -3,6 +3,8 @@ from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Posts
+from .forms import PostForm
+
 # Create your views here.
 
 def index(request):
@@ -31,3 +33,16 @@ def profile(request):
     current_user = request.user
     profile = Posts.objects.filter(user=current_user)
     return render(request,'profile.html',{"pics":profile})
+
+def post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user=current_user
+            post.save()
+        return redirect('index')
+    else:
+        form = PostForm()
+        return render(request)
