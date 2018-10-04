@@ -1,0 +1,9 @@
+{% if pics %}
+{% for post in pics %}
+ {{post.user.username}}
+<img src="{{post.image.url}}"  width='500' height='500' alt="">
+posted {{post.postedOn|timesince}} ago
+{% endfor %}
+{% else %}
+<h1> YOU HAVE POSTED NOTHING</h1>
+{% endif %}

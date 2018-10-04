@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
@@ -21,7 +21,7 @@ def signup(request):
             email = form.cleaned_data.get('email')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username,email=email, password=raw_password)
-            login(user)
+            login(request,user)
             return redirect('index')
     else:
         form = SignUpForm()
@@ -30,4 +30,4 @@ def signup(request):
 def profile(request):
     current_user = request.user
     profile = Posts.objects.filter(user=current_user)
-    return render('profile.html',{"pics":profile})
+    return render(request,'profile.html',{"pics":profile})
