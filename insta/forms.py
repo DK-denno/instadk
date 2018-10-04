@@ -20,7 +20,11 @@ class SignUpForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Posts
-        exclude = ['editor','pub_date']
-        widgets = {
-            'tags':forms.CheckboxSelectMultiple(),
-        }
+        exclude = ['postedon']
+       
+
+# class PostForm(forms.ModelForm):
+#     class Meta:
+#         model = Posts
+#         exclude = ['editor','pub_date']
+       
