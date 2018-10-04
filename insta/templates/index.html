@@ -1,5 +1,25 @@
-{% for post in post %}
- {{post.user.username}}
-<img src="{{post.image.url}}"  width='500' height='500' alt="">
-posted {{post.postedOn|timesince}} ago
+{% extends 'base2.html' %}
+{% block content %}
+<div class='container'>
+    <div class='row'>
+
+
+        {% for post in post %}
+        <div class='col-md-4'>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{post.user.username}}</h5>
+                <p class="card-text">{{post.caption}}</p>
+            </div>
+            <div class='card-footer'>
+                posted {{post.postedOn|timesince}} ago
+            </div>
+        </div>
+    </div>
+  
 {% endfor %}
+</div>
+</div>
+
+{% endblock %}
