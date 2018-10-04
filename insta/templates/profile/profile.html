@@ -4,6 +4,9 @@
     {% block content %}
     <div class='container'>
         <div class='row'>
+            <img src="{{profile.dp.url}}" id='prof' alt="">
+            <h1>{{profile.user.username}}</h1>
+            <h2>{{profile.bio}}</h2>
 
                 {% if pics %}
             {% for post in pics %}

@@ -20,7 +20,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User)
     dp =  models.ImageField(upload_to='images')
     bio = HTMLField(max_length=500)
-    posts = models.ForeignKey(Posts, null=True)
-
+    
     def __str__(self):
         return self.user.username
+
+

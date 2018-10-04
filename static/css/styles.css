@@ -37,4 +37,6 @@
   .navbar .input-search:focus {
     text-align: left;
   }
-  
+  #prof{
+      border-radius: 50%
+  }

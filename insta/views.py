@@ -2,15 +2,15 @@ from django.shortcuts import render,redirect
 from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Posts
+from .models import Posts,User,Profile
 from .forms import PostForm
 
 # Create your views here.
 
 def index(request):
     post = Posts.objects.all()
-    user = request.user
-    return render(request,'index.html',{"post":post,"user":user})
+    profile = Profile.objects.get(user=request.user)
+    return render(request,'index.html',{"post":post,"user":profile})
 
 
 
@@ -33,7 +33,8 @@ def signup(request):
 def profile(request):
     form = PostForm()
     current_user = request.user
-    profile = Posts.objects.filter(user=current_user)
+    profile = Profile.objects.get(user=current_user)
+    posts = Posts.objects.filter(user=current_user)
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
@@ -41,4 +42,4 @@ def profile(request):
             post.user=current_user
             post.save()
         return redirect('index')    
-    return render(request,'profile/profile.html',{"pics":profile,"form":form})
+    return render(request,'profile/profile.html',{"pics":posts,"form":form,"profile":profile})
