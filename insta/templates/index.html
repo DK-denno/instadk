@@ -1,5 +1,5 @@
 {% for post in post %}
  {{post.user.username}}
 <img src="{{post.image.url}}"  width='500' height='500' alt="">
-
+posted {{post.postedOn|timesince}} ago
 {% endfor %}

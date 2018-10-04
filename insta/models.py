@@ -14,6 +14,6 @@ class Posts(models.Model):
 
     
     def __str__(self):
-        return self.user
+        return self.user.username
     class Meta:
         ordering = ['-id']
