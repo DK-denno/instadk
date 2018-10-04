@@ -24,4 +24,8 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-
+class Comments(models.Model):
+    user = models.ForeignKey(User)
+    post=models.ForeignKey(Posts)
+    comment=models.CharField(max_length=200)
+    
