@@ -1,0 +1,43 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+
+  <title style="font-family: 'Calligraffitti', cursive;" >InstaDk</title>
+  
+  
+  {% block styles %}
+  
+  {% bootstrap_css %}
+
+  <link rel="shortcut icon" href="https://sguru.org/wp-content/uploads/2018/01/best-instagram-logo-download-here-15.png">
+  
+  <link rel="stylesheet" href="{% static 'css/gall.css' %}">
+  
+  {% endblock %}
+
+</head>
+<body style="
+    background: #f09433; 
+  background: -moz-linear-gradient(45deg, #f09433 , #e6683c , #dc2743 , #cc2366 , #bc1888 ); 
+  background: -webkit-linear-gradient(45deg, #f09433 ,#e6683c ,#dc2743,#cc2366 ,#bc1888 ); 
+  background: linear-gradient(45deg, #f09433 ,#e6683c ,#dc2743 ,#cc2366 ,#bc1888 ); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );" >
+   
+   <div class="container">
+
+    {% block content %}
+    
+    {%endblock%}
+    {{news.title}}
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
+    {% endblock %}
+  </div>
+</body>
+</html>
