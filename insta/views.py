@@ -6,7 +6,8 @@ from .models import Posts
 # Create your views here.
 
 def index(request):
-    return render(request,'index.html')
+    post = Posts.objects.all()
+    return render(request,'index.html',{"post":post})
 
 
 
@@ -26,5 +27,3 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'reg.html', {'form': form})
 
-def home(request):
-    post = Posts.Objects.all()
