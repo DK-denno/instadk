@@ -27,3 +27,7 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'reg.html', {'form': form})
 
+def profile(request):
+    current_user = request.user
+    profile = Posts.objects.filter(user=current_user)
+    return render('profile.html',{"pics":profile})
