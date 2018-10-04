@@ -30,19 +30,14 @@ def signup(request):
     return render(request, 'reg.html', {'form': form})
 
 def profile(request):
+    form = PostForm()
     current_user = request.user
     profile = Posts.objects.filter(user=current_user)
-    return render(request,'profile.html',{"pics":profile})
-
-def post(request):
-    current_user = request.user
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user=current_user
             post.save()
-        return redirect('index')
-    else:
-        form = PostForm()
-        return render(request,'edit_profile.html',{"form":form})
+        return redirect('index')    
+    return render(request,'profile/profile.html',{"pics":profile,"form":form})

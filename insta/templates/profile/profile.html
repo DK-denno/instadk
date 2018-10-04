@@ -1,0 +1,42 @@
+  {% load bootstrap4 %} {% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New Article</title>
+  {{form.media}}
+
+{% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
+
+</head>
+
+<body>
+
+{% if pics %}
+{% for post in pics %}
+ {{post.user.username}}
+<img src="{{post.image.url}}"  width='500' height='500' alt="">
+posted {{post.postedOn|timesince}} ago
+{% endfor %}
+{% else %}
+<h1> YOU HAVE POSTED NOTHING</h1>
+{% endif %}
+<form  action="{%url 'profile' %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {% bootstrap_form form%}
+    <input type="submit" class="btn btn-primary btn-lg" value="Post">
+  </form>
+
+
+   {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
+</body>
+
+</html>
