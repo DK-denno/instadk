@@ -5,6 +5,7 @@
 
 
         {% for post in post %}
+        {{post.user.dp.url}}
         <div class='col-md-4'>
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
@@ -13,7 +14,7 @@
                 <p class="card-text">{{post.caption}}</p>
             </div>
             <div class='card-footer'>
-                posted {{post.postedOn|timesince}} ago
+                posted {{post.postedon|timesince}} ago
             </div>
         </div>
     </div>

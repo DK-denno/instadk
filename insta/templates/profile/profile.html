@@ -5,7 +5,7 @@
     <div class='container'>
         <div class='row'>
 
-
+                {% if pics %}
             {% for post in post %}
             <div class='col-md-4'>
                 <div class="card" style="width: 50%;">
@@ -15,7 +15,7 @@
                         <p class="card-text">{{post.caption}}</p>
                     </div>
                     <div class='card-footer'>
-                        posted {{post.postedOn|timesince}} ago
+                        posted {{post.postedon|timesince}} ago
                     </div>
                 </div>
             </div>
@@ -24,14 +24,7 @@
         </div>
     </div>
 
-    {% if pics %}
-    {% for post in pics %}
-    {{post.user.username}}
-    <img src="{{post.image.url}}" width='500' height='500' alt="">
-    posted {{post.postedOn|timesince}} ago
-    {% endfor %}
-    {% else %}
-    <h1> YOU HAVE POSTED NOTHING</h1>
+   <h1> YOU HAVE POSTED NOTHING</h1>
     {% endif %}
 
     <form action="{%url 'profile' %}" method="post" enctype="multipart/form-data">

@@ -9,16 +9,20 @@ class Profile(models.Model):
     dp = models.ImageField(upload_to='images')
     bio = HTMLField(max_length=500)
 
+    def __str__(self):
+        return self.user.username
 
 
 class Posts(models.Model):
     user = models.ForeignKey(User)
     caption = models.CharField(max_length=250)
     image = models.ImageField(upload_to='images')
-    postedOn = models.DateTimeField(auto_now_add=True)
+    postedon = models.DateTimeField(auto_now_add=True)
+
 
     
     def __str__(self):
         return self.user.username
+
     class Meta:
         ordering = ['-id']
