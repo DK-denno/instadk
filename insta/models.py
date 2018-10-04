@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 import datetime as dt
 # Create your models here.
 
+class Profile(models.Model):
+    user = models.ForeignKey(User)
+    dp = models.ImageField(upload_to='images')
+    bio = models.CharField(max_length=500)
 
 
 
