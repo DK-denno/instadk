@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Posts,Comments
+from .models import Posts,Comments,Profile
 
 # class UserLoginForm(forms.Form):
 #     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Username'}))
@@ -23,17 +23,8 @@ class PostForm(forms.ModelForm):
         exclude = ['user','postedon']
         fields = ['caption','image']
        
-
-# class Comments(forms.ModelForm):
-#     class Meta:
-
-
-
-
-
-
-# class PostForm(forms.ModelForm):
-#     class Meta:
-#         model = Posts
-#         exclude = ['editor','pub_date']
-       
+class Prof(forms.ModelForm):
+    class Meta:
+        model=Profile
+        exclude=[]
+        fields=['dp','bio']

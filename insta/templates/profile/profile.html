@@ -7,12 +7,10 @@
             
             
                     <div class="col-md4">
-                            {% if post.image.dp.url %} 
-           <img src="{{profile.dp.url}}"  id="prof" width='100' height='100' alt="">
+         {% if profile.dp %} 
+           <img src="{{profile.dp.url}}"  id="prof" width='250' height='250' alt="">
            {% else %}
-           <img src="https://www.w3schools.com/howto/img_avatar.png"  id="prof" alt="">
-           
-           
+           <img src="https://www.w3schools.com/howto/img_avatar.png"  id="prof" alt="">           
            {% endif %}
         </div>
         <div class="col-md-8">

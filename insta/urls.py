@@ -8,6 +8,7 @@ urlpatterns=[
     url(r'auth/',include('registration.backends.simple.urls')),
     url(r'^sign/$',views.signup, name='signup'),
     url(r'^profile/$',views.profile, name='profile'),
+    url(r'^prof/(\d+)',views.profiles,name='prof'),
   
 ]
 if settings.DEBUG:
