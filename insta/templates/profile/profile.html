@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-8">
             <div class="row" style="margin-top:10px;">
-      <div class="col-md-1">    <h2>  {{profile.user.username}}</h2></div><div class="col-md-4"> <button>Edit Profile</button>htsre<a class="fas fa-cogs"></a>
+      <div class="col-md-1">    <h2>  {{profile.user.username}}</h2><br>{{profile.bio}}</div><div class="col-md-4"> <button data-toggle="modal" data-target="#mode">Edit Profile</button>htsre<a class="fas fa-cogs"></a>
     </div>
      
     </div>
@@ -87,5 +87,32 @@
     
     </div>
    
-
+    <div class="modal fade" id="mode" role="dialog">
+        <div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">POST</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    
+                </div>
+                <div class="modal-body">
+                        <form action="{%url 'profile' %}" method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+                    
+                            {% bootstrap_form prof%}
+                            <input type="submit" class="btn btn-primary btn-lg" value="Post">
+                        </form>
+                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    
+    </div>
+   
     {% endblock %}
