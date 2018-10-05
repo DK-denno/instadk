@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Posts,User,Profile
+from .models import Posts,Profile
 from .forms import PostForm
 
 # Create your views here.
@@ -39,9 +39,9 @@ def profile(request):
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save(commit=False)
-            caption = form.cleaned_data['caption']
-            post = Posts(user=current_user,caption=caption,profile=profile)
+            post=form.save(commit=False)
+            post.user=current_user
+            post.profile=profile
             post.save()
             return redirect('index')   
         
