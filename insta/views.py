@@ -41,7 +41,7 @@ def profile(request):
         if form.is_valid():
             form.save(commit=False)
             caption = form.cleaned_data['caption']
-            post = Posts(user=current_user,caption=caption)
+            post = Posts(user=current_user,caption=caption,profile=profile)
             post.save()
             return redirect('index')   
         

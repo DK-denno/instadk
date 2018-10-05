@@ -4,12 +4,32 @@
     {% block content %}
     <div class='container'>
         <div class='row'>
-           <img src="{{profile.dp.url}}" width="50" height="50" id="prof" alt="">
-    
+            
+            
+                    <div class="col-md4">
+                        
+           <img src="{{profile.dp.url}}"  id="prof" alt="">
+        </div>
+        <div class="col-md-8">
+            <div class="row" style="margin-top:10px;">
+      <div class="col-md-1">    <h2>  {{profile.user.username}}</h2></div><div class="col-md-4"> <button>Edit Profile</button></div></div>
+            <div class="row">
+                <div class="col-md-4"><h3><em>followers</em>: 0</h3></div>
+                <div class="col-md-4"><h3><em>following</em>: 0</h3></div>
+                <div class="col-md-4"><h3><em>Posts</em>: 0</h3></div>
+           
+           
+           
+           <br>
+        </div>
+        </div>
+      </div>
                 {% if pics %}
+                <div class="row">
             {% for post in pics %}
             <div class='col-md-4'>
-                <div class="card" style="width: 50%;">
+                <br>
+                <div class="panel" style="width: 50%;">
                     <img class="card-img-top" src="" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{post.user.username}}</h5>
