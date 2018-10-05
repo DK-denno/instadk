@@ -9,8 +9,7 @@ from .forms import PostForm
 
 def index(request):
     post = Posts.objects.all()
-    profile = Profile.objects.get(user=request.user)
-    return render(request,'index.html',{"post":post,"user":profile})
+    return render(request,'index.html',{"post":post})
 
 
 
@@ -24,6 +23,8 @@ def signup(request):
             email = form.cleaned_data.get('email')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username,email=email, password=raw_password)
+            profile = Profile(user=user)
+            profile.save()
             login(request,user)
             return redirect('index')
     else:
@@ -38,8 +39,15 @@ def profile(request):
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.user=current_user
+            form.save(commit=False)
+            caption = form.cleaned_data['caption']
+            post = Posts(user=current_user,caption=caption)
             post.save()
-        return redirect('index')    
-    return render(request,'profile/profile.html',{"pics":posts,"form":form,"profile":profile})
+            return redirect('index')   
+        
+    return render(request,'profile/profile.html',{"pics":posts,"profile":profile,"form":form})
+
+
+def profiles(request,id):
+    profile = Profile.objects.filter(user_id=id)
+    return render(request,'profile/profiles.html',{"profile":profile})

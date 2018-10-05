@@ -4,19 +4,13 @@
     {% block content %}
     <div class='container'>
         <div class='row'>
-                {% autoescape on %}
-              
-           
-            <img src="{{profile.dp.url}}" id='prof' alt="">
-            <h1>{{profile.user.username}}</h1>
-            <h2>{{profile.bio|safe}}</h2>
-             
-            {% endautoescape %}
+           <img src="{{profile.dp.url}}" width="50" height="50" id="prof" alt="">
+    
                 {% if pics %}
             {% for post in pics %}
             <div class='col-md-4'>
                 <div class="card" style="width: 50%;">
-                    <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{post.user.username}}</h5>
                         <p class="card-text">{{post.caption}}</p>
@@ -34,13 +28,14 @@
    <h1> YOU HAVE POSTED NOTHING</h1>
     {% endif %}
 
+    
+
     <form action="{%url 'profile' %}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
 
         {% bootstrap_form form%}
         <input type="submit" class="btn btn-primary btn-lg" value="Post">
     </form>
-
 
 
     

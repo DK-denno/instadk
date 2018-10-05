@@ -5,12 +5,12 @@
 
 
         {% for post in post %}
-      <img src="{{user.dp.url}}" id='prof' alt="">
+        {{post.profile.dp.url}}
         <div class='col-md-4'>
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+            <img class="card-img-top" src="" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title"> {{post.user.user.username}}</h5>
+                <h5 class="card-title">{{post.user.username}}</h5>
                 <p class="card-text">{{post.caption}}</p>
             </div>
             <div class='card-footer'>
