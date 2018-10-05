@@ -8,17 +8,21 @@
         <img alt="">
         
         <div class='col-md-4'>
-        <div class="card" style="width: 18rem;">
-            <div>
-        <img id="prof"  src="{{post.profile.dp.url}}" width="50" height="50"  alt="Card image cap">{{post.user.username}}
+        <div class="card" style="width: 45rem;">
+            <div class='card-header'>
+        <img id="prof"  src="{{post.profile.dp.url}}" width="50" height="50"  alt="Card image cap">
+         {{post.user.username}}
     </div>
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">{{post.caption}}</p>
-            </div>
-            <div class='card-footer'>
-                posted {{post.postedon|timesince}} ago
-            </div>
+           
+               
+    <img src="{{post.image.url}}"style="width: 45rem;" alt="">
+    <div class='down'style="padding:20px;">
+            <p class="card-text">{{post.caption}}</p>
+
+    </div>
+   
+           
+          
         </div>
     </div>
   
