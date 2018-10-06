@@ -90,6 +90,9 @@ def profile(request):
 def profiles(request,id):
     profile = Profile.objects.filter(user_id=id)
     posts=Posts.objects.filter(user_id=request.user.id)
+    if follow:
+        follow=Follow.objects.get(current_user=request.user)
+        followers=follow.users.all()
     
     return render(request,'profile/profiles.html',{"profile":profile,"pics":posts})
 
