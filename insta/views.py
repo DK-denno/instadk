@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Posts,Profile
+from .models import Posts,Profile,Follow
 from .forms import PostForm,Prof
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -18,7 +18,13 @@ from django.http import HttpResponse
 
 def index(request):
     post = Posts.objects.all()
-    return render(request,'index.html',{"post":post})
+    follow = Follow.objects.filter(current_user=request.user)
+    if follow:
+        follow=Follow.objects.get(current_user=request.user)
+        followers=follow.users.all()
+        return render(request,'index.html', {"post":post,"followers":followers})
+    return render(request,'index.html', {"post":post})
+
 
 
 
@@ -100,6 +106,12 @@ def activate(request, uidb64, token):
 
 
 def follow(request,operation,id):
-    user=User.objecta.get(id=id)
-    if operation=='add':
-        
+    user=User.objects.get(id=id)   
+    if operation=='follow':
+        Follow.follow(request.user,user)
+        return redirect('index')
+    elif operation=='unfollow':
+        Follow.unfollow(request.user,user)
+        return redirect('index')
+
+
