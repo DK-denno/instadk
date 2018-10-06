@@ -3,10 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Posts,Comments,Profile
 
-# class UserLoginForm(forms.Form):
-#     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Username'}))
-#     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'Password'}))
-   
+
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30)
@@ -28,3 +25,10 @@ class Prof(forms.ModelForm):
         model=Profile
         exclude=[]
         fields=['dp','bio']
+
+
+class Comments(forms.ModelForm):
+    class Meta:
+        model=Comments
+        exclude=[]
+        fields=['comment']

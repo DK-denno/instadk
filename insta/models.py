@@ -29,7 +29,7 @@ class Posts(models.Model):
 
 class Comments(models.Model):
     user = models.ForeignKey(User)
-    post=models.ForeignKey(Posts)
+    post=models.ForeignKey(Posts,related_name='comments')
     comment=models.CharField(max_length=200)
 
 class Follow(models.Model):

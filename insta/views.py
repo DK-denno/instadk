@@ -3,7 +3,7 @@ from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Posts,Profile,Follow
-from .forms import PostForm,Prof
+from .forms import PostForm,Prof,Comments
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -18,12 +18,13 @@ from django.http import HttpResponse
 
 def index(request):
     post = Posts.objects.all()
+    comm = Comments()
     follow = Follow.objects.filter(current_user=request.user)
     if follow:
         follow=Follow.objects.get(current_user=request.user)
         followers=follow.users.all()
-        return render(request,'index.html', {"followers":followers,"post":post})
-    return render(request,'index.html', {"post":post})
+        return render(request,'index.html', {"followers":followers,"comm":comm,"post":post})
+    return render(request,'index.html', {"post":post,"comm":comm})
 
 
 
@@ -128,5 +129,18 @@ def follow(request,operation,id):
     elif operation=='unfollow':
         Follow.unfollow(request.user,user)
         return redirect('index')
+
+
+def comment(request,id):
+    post = Posts.objects.get(id=id)
+    if request.method == 'POST':
+        comm=Comments(request.POST)
+        if comm.is_valid():
+            comment=comm.save(commit=False)
+            comment.user = request.user
+            comment.post=post
+            comment.save()
+            return redirect('index')
+    return redirect('index')
 
 
