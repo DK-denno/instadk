@@ -67,6 +67,7 @@ def profile(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     posts = Posts.objects.filter(user=current_user)
+    follow = Follow.objects.filter(current_user=request.user)
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         prof_form=Prof(request.POST,request.FILES,instance=current_user.profile)
@@ -78,8 +79,12 @@ def profile(request):
             return redirect('index') 
         if prof_form.is_valid():
             prof_form.save()
-            return redirect('profile')        
-    return render(request,'profile/profile.html',{"pics":posts,"profile":profile,"prof":prof_form,"form":form})
+            return redirect('profile')  
+    if follow:
+        follow=Follow.objects.get(current_user=request.user)
+        followers=follow.users.all()      
+        return render(request,'profile/profile.html',{"pics":posts,"profile":profile,"prof":prof_form,"followers":followers,"form":form})
+        
 
 
 def profiles(request,id):
