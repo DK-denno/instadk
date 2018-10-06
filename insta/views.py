@@ -88,18 +88,21 @@ def profile(request):
 
 
 def profiles(request,id):
-    profile = Profile.objects.filter(user_id=id)
+    profile = Profile.objects.get(user_id=id)
+    print(profile.user)
     posts=Posts.objects.filter(user_id=request.user.id)
+    follow=Follow.objects.filter(current_user=request.user)
     if follow:
         follow=Follow.objects.get(current_user=request.user)
         followers=follow.users.all()
         for c_user in followers:
             if c_user.id == request.user.id:
                 unfollow='unfollow'
+                return render(request,'profile/profiles.html',{"profile":profile,"pics":posts,"unfollow":unfollow})
             else:
                 follow='follow'    
-    return render(request,'profile/profiles.html',{"profile":profile,"pics":posts,"unfollow":unfollow,"follow":follow})
-
+                return render(request,'profile/profiles.html',{"profile":profile,"pics":posts,"follow":follow})
+    return render(request,'profile/profiles.html',{"profile":profile,"pics":posts})
 
 def activate(request, uidb64, token):
     try:

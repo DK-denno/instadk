@@ -63,3 +63,9 @@ span.username{
   font-size: 24px;
   /* font-weight: bold; */
 }
+a{
+  color: black
+}
+a:hover{
+  color: black
+}

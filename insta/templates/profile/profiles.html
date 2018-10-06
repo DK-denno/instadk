@@ -7,10 +7,10 @@
             
             
                     <div class="col-md4">
-                            {% if profile.dp.url %} 
-           <img src="{{profile.dp.url}}"  id="prof" width='100' height='100' alt="">
+                            {% if profile.dp %} 
+           <img src="{{profile.dp.url}}"  id="prof" width='200' height='200' alt="">
            {% else %}
-           <img src="https://www.w3schools.com/howto/img_avatar.png"  id="prof" alt="">
+           <img src="https://www.w3schools.com/howto/img_avatar.png" width='200' height='200'  id="prof" alt="">
            
            
            {% endif %}
@@ -20,16 +20,18 @@
       <div class="col-md-1">    <h2>  {{profile.user.username}}</h2></div><div class="col-md-4"> <button>Edit Profile</button>htsre<a class="fas fa-cogs"></a>
     </div>
     </div>
+   
             <div class="row">
                 <div class="col-md-4"><h3><em>followers</em>: 0</h3></div>
                 <div class="col-md-4"><h3><em>following</em>: 0</h3></div>
                 <div class="col-md-4"><h3><em>Posts</em>: 0</h3></div>
             
-                {% if follow %}
-                <a href='/follow/follow/{{profile.user.id}}/'>{{follow}}</a>
-                {% endif %}
                 {% if unfollow %}
-                <a href='/follow/UNfollow/{{profile.user.id}}/'>{{UNfollow}}</a>
+                yhk
+                <a href='/follow/unfollow/{{profile.user.id}}/'>{{unfollow}}</a>
+                {% elif follow %}
+                
+                <a href='/follow/follow/{{profile.user.id}}/'><button class='btn' >{{follow}}</button></a>
                 {% endif %}
            
            

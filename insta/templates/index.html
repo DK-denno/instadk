@@ -11,8 +11,9 @@
             <div class='col-md-4'>
                 <div class="card" style="width: 35rem;">
                     <div class='card-header'>
+                        <a href='/prof/{{post.profile.id}}/'>
                         <img id="prof" src="{{post.profile.dp.url}}" width="50" height="50" alt="Card image cap">
-                        {{post.user.username}}
+                        {{post.user.username}}</a>
                     </div>
 
 
@@ -26,6 +27,8 @@
 
                 </div>
             </div>
+            <br>
+            <br>
 
             {% endfor %}
         </div>
@@ -34,10 +37,10 @@
             <div class="overflowTest">
                 {% for fol in followers %}
                 {% if fol.profile.dp %}
-                <li><a href='/prof/{{fol.id}}/'> <img class="img.img-thumbnail.rounded-circle.user" src="{{fol.profile.dp.url}}" style="border-radius:100%"  width='50' height='50' alt=""> {{fol.username}}</a></li>
+                <li><a href='/prof/{{fol.id}}/'> <img class="img.img-thumbnail.rounded-circle.user" src="{{fol.profile.dp.url}}" style="border-radius: 50% ; padding: 0.15rem;  width: 45px; background: linear-gradient(to left bottom, #ab1a4b, #c93c48, #e15e43, #f3813f, #ffa63e);" width='50' height='50' alt=""> {{fol.username}}</a></li>
                 <br>
                 {% else %}
-                <li><a href='/prof/{{fol.id}}/'> <img  class='img.img-thumbnail.rounded-circle.user' src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png"  width='50' height='50' alt=""> {{fol.username}}</a></li>
+                <li><a href='/prof/{{fol.id}}/'> <img  style='style="border-radius: 50% ; padding: 0.15rem;  width: 45px; background: linear-gradient(to left bottom, #ab1a4b, #c93c48, #e15e43, #f3813f, #ffa63e);' class='img.img-thumbnail.rounded-circle.user' src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png"  width='50' height='50' alt=""> {{fol.username}}</a></li>
                 {% endif %}
                 <br>
                 
