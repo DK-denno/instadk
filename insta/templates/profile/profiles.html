@@ -24,7 +24,13 @@
                 <div class="col-md-4"><h3><em>followers</em>: 0</h3></div>
                 <div class="col-md-4"><h3><em>following</em>: 0</h3></div>
                 <div class="col-md-4"><h3><em>Posts</em>: 0</h3></div>
-           
+            
+                {% if follow %}
+                <a href='/follow/follow/{{profile.user.id}}/'>{{follow}}</a>
+                {% endif %}
+                {% if unfollow %}
+                <a href='/follow/UNfollow/{{profile.user.id}}/'>{{UNfollow}}</a>
+                {% endif %}
            
            
            <br>
