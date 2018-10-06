@@ -22,7 +22,7 @@ def index(request):
     if follow:
         follow=Follow.objects.get(current_user=request.user)
         followers=follow.users.all()
-        return render(request,'index.html', {"post":post,"followers":followers})
+        return render(request,'index.html', {"followers":followers,"post":post})
     return render(request,'index.html', {"post":post})
 
 
@@ -78,7 +78,6 @@ def profile(request):
             return redirect('index') 
         if prof_form.is_valid():
             prof_form.save()
-
             return redirect('profile')        
     return render(request,'profile/profile.html',{"pics":posts,"profile":profile,"prof":prof_form,"form":form})
 
@@ -86,6 +85,7 @@ def profile(request):
 def profiles(request,id):
     profile = Profile.objects.filter(user_id=id)
     posts=Posts.objects.filter(user_id=request.user.id)
+    
     return render(request,'profile/profiles.html',{"profile":profile,"pics":posts})
 
 

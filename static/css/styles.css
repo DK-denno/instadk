@@ -1,44 +1,65 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: white;
-    border-bottom: 2px solid #ddd;
-  }
-  .navbar .logo-section {
-    display: flex;
-    align-items: center;
-  }
-  .navbar .logo-section div {
-    align-self: stretch;
-    width: 1px;
-    background: black;
-    margin: 0 20px;
-  }
-  .navbar .icons-section .fa {
-    text-decoration: none;
-    color: inherit;
-    font-size: 2rem;
-    margin: 0 10px;
-  }
-  .navbar .logo {
-    width: 40px;
-  }
-  .navbar .logoname {
-    width: 130px;
-  }
-  .navbar .input-search {
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    border: 2px solix #ddd;
-    outline: 0;
-  }
-  .navbar .input-search:focus {
-    text-align: left;
-  }
-  #prof{
-      border-radius: 50%;
-      size: 50%;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-bottom: 2px solid #ddd;
+}
+.navbar .logo-section {
+  display: flex;
+  align-items: center;
+}
+.navbar .logo-section div {
+  align-self: stretch;
+  width: 1px;
+  background: black;
+  margin: 0 20px;
+}
+.navbar .icons-section .fa {
+  text-decoration: none;
+  color: inherit;
+  font-size: 2rem;
+  margin: 0 10px;
+}
+.navbar .logo {
+  width: 40px;
+}
+.navbar .logoname {
+  width: 130px;
+}
+.navbar .input-search {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solix #ddd;
+  outline: 0;
+}
+.navbar .input-search:focus {
+  text-align: left;
+}
+#prof {
+  border-radius: 50%;
+  size: 50%;
+}
+.overflowTest {
+  color: white;
+  padding: 15px;
+  width: 110%;
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid #ccc;
+}
+.img.img-thumbnail.rounded-circle.user{
+  padding: 0.15rem;
+  margin: 5px 5px 0px 5px;
+  border: 2.5px solid #fff;
+  max-width: 100%;
+  height: auto;
+  width: 45px;
+  background: linear-gradient(to left bottom, #ab1a4b, #c93c48, #e15e43, #f3813f, #ffa63e);
+}
+span.username{
+  font-size: 24px;
+  /* font-weight: bold; */
+}

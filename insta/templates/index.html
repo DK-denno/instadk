@@ -3,33 +3,52 @@
 <div class='container'>
     <div class='row'>
 
+        <div class='col-md-4 col-xs-4 col-sm-4'>
 
-        {% for post in post %}
-        <img alt="">
-        
-        <div class='col-md-4'>
-        <div class="card" style="width: 45rem;">
-            <div class='card-header'>
-        <img id="prof"  src="{{post.profile.dp.url}}" width="50" height="50"  alt="Card image cap">
-         {{post.user.username}}
-    </div>
-           
-               
-    <img src="{{post.image.url}}"style="width: 45rem;" alt="">
-    <div class='down'style="padding:20px;">
-            <p class="card-text">{{post.caption}}</p>
+            {% for post in post %}
 
-    </div>
-   
-           
-          
+
+            <div class='col-md-4'>
+                <div class="card" style="width: 35rem;">
+                    <div class='card-header'>
+                        <img id="prof" src="{{post.profile.dp.url}}" width="50" height="50" alt="Card image cap">
+                        {{post.user.username}}
+                    </div>
+
+
+                    <img src="{{post.image.url}}" style="width: 35rem;" alt="">
+                    <div class='down' style="padding:20px;">
+                        <p class="card-text">{{post.caption}}</p>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+        <div class="col-md-4"></div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class="overflowTest">
+                {% for fol in followers %}
+                {% if fol.profile.dp %}
+                <li><a href='/prof/{{fol.id}}/'> <img class="img.img-thumbnail.rounded-circle.user" src="{{fol.profile.dp.url}}" style="border-radius:100%"  width='50' height='50' alt=""> {{fol.username}}</a></li>
+                <br>
+                {% else %}
+                <li><a href='/prof/{{fol.id}}/'> <img  class='img.img-thumbnail.rounded-circle.user' src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png"  width='50' height='50' alt=""> {{fol.username}}</a></li>
+                {% endif %}
+                <br>
+                
+                {% endfor %}
+                
+            </div>
+
         </div>
     </div>
-  
-{% endfor %}
-</div>
-</div>
-{% for follower in followers %}
-{{follower.username}}
-{% endfor %}
-{% endblock %}
+    {% for follower in followers %}
+    {{follower.username}}
+    {% endfor %}
+    {{followers|length}}
+    {% endblock %}

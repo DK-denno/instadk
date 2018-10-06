@@ -45,3 +45,4 @@ class Follow(models.Model):
     def unfollow(cls,current_user,new):
         friends,created=cls.objects.get_or_create(current_user=current_user)
         friends.users.remove(new)
+
