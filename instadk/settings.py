@@ -33,6 +33,7 @@ LOGIN_REDIRECT_URL = 'index'
 
 INSTALLED_APPS = [
     'insta',
+    'grappelli',
     'tinymce',
     'bootstrap4',
     'django.contrib.admin',
