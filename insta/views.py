@@ -145,20 +145,21 @@ def comment(request,id):
     return redirect('index')
 
 def likes(request,id):
-    likes=Posts.object.get(id=id)
+    likes=Posts.objects.get(id=id)
     if request.method == 'POST':
 
         like = Likes(request.POST)
         if like.is_valid():
-            already_liked = Likes.objects.all()
-            for user in already_liked.user:
-                if user==request.user:
-                   user.delete()
-                else:
-                    liked=like.save(commit=False)
-                    liked.user = request.user
-                    liked.post = likes.id
-                    liked.save()
+            liked=like.save(commit=False)
+            # already_liked = Likes.objects.all()
+            # for user in already_liked.user:
+            #     if user==request.user:
+            #        user.delete()
+            #     else:
+                    
+            liked.user = request.user
+            liked.post = likes.post
+            liked.save()
             return redirect('index')   
     return redirect('index')
 
