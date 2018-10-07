@@ -32,6 +32,12 @@ class Comments(models.Model):
     post=models.ForeignKey(Posts,related_name='comments')
     comment=models.CharField(max_length=200)
 
+class Likes(models.Model):
+    user = models.ForeignKey(User)
+    post=models.ForeignKey(Posts,related_name='likes')
+     
+
+
 class Follow(models.Model):
     users=models.ManyToManyField(User,related_name='follow')
     current_user=models.ForeignKey(User,related_name='c_user',null=True)

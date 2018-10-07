@@ -26,10 +26,10 @@
                             {%csrf_token%}
                     
                             {% bootstrap_form comm %}
-                            <input type="submit" class="btn btn-primary btn-lg" value="Post">
+                            <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
                         </form>
                         {% for comment in post.comments.all %}
-                        {{comment.user.username}}:{{comment.comment}}
+                        <b><em>{{comment.user.username}}</em></b>:{{comment.comment}}
                         {% endfor %}
 
                     </div>
