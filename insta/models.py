@@ -25,7 +25,19 @@ class Posts(models.Model):
 
     class Meta:
         ordering = ['-id']
-
+    
+    @classmethod
+    def save_post(self):
+        self.save()
+    @classmethod
+    def get_posts(cls):
+         posts = cls.objects.all()
+         return posts
+    @classmethod
+    def delete_post(self):
+        self.delete()
+    
+    
 
 class Comments(models.Model):
     user = models.ForeignKey(User)
