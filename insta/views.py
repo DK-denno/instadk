@@ -20,11 +20,6 @@ def index(request):
     post = Posts.objects.all()
     comm = Comments()
     like = Likes()
-    follow = Follow.objects.filter(current_user=request.user)
-    if follow:
-        follow=Follow.objects.get(current_user=request.user)
-        followers=follow.users.all()
-        return render(request,'index.html', {"followers":followers,"like":like,"comm":comm,"post":post})
     return render(request,'index.html', {"post":post,"like":like,"comm":comm})
 
 
@@ -86,6 +81,7 @@ def profile(request):
         follow=Follow.objects.get(current_user=request.user)
         followers=follow.users.all()      
         return render(request,'profile/profile.html',{"pics":posts,"profile":profile,"prof":prof_form,"followers":followers,"form":form})
+    return render(request,'profile/profile.html',{"pics":posts,"profile":profile,"prof":prof_form,"form":form})
         
 
 
@@ -158,7 +154,7 @@ def likes(request,id):
             #     else:
                     
             liked.user = request.user
-            liked.post = likes.post
+            liked.post = likes
             liked.save()
             return redirect('index')   
     return redirect('index')
