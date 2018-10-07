@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Posts,Comments,Profile
+from .models import Posts,Comments,Profile,Likes
 
 
 
@@ -32,3 +32,10 @@ class Comments(forms.ModelForm):
         model=Comments
         exclude=[]
         fields=['comment']
+
+class Likes(forms.ModelForm):
+    class Meta:
+        model=Likes
+        exclude=[]
+        fields=[]
+        

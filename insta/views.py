@@ -3,7 +3,7 @@ from . forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Posts,Profile,Follow
-from .forms import PostForm,Prof,Comments
+from .forms import PostForm,Prof,Comments,Likes
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -19,12 +19,13 @@ from django.http import HttpResponse
 def index(request):
     post = Posts.objects.all()
     comm = Comments()
+    like = Likes()
     follow = Follow.objects.filter(current_user=request.user)
     if follow:
         follow=Follow.objects.get(current_user=request.user)
         followers=follow.users.all()
-        return render(request,'index.html', {"followers":followers,"comm":comm,"post":post})
-    return render(request,'index.html', {"post":post,"comm":comm})
+        return render(request,'index.html', {"followers":followers,"like":like,"comm":comm,"post":post})
+    return render(request,'index.html', {"post":post,"like":like,"comm":comm})
 
 
 
@@ -141,6 +142,24 @@ def comment(request,id):
             comment.post=post
             comment.save()
             return redirect('index')
+    return redirect('index')
+
+def likes(request,id):
+    likes=Posts.object.get(id=id)
+    if request.method == 'POST':
+
+        like = Likes(request.POST)
+        if like.is_valid():
+            already_liked = Likes.objects.all()
+            for user in already_liked.user:
+                if user==request.user:
+                   user.delete()
+                else:
+                    liked=like.save(commit=False)
+                    liked.user = request.user
+                    liked.post = likes.id
+                    liked.save()
+            return redirect('index')   
     return redirect('index')
 
 

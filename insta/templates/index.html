@@ -28,9 +28,17 @@
                             {% bootstrap_form comm %}
                             <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
                         </form>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+                    
+                            {% bootstrap_form like %}
+                            <input type="submit" class="btn btn-primary btn-lg" value="like">
+                        </form>
                         {% for comment in post.comments.all %}
                         <b><em>{{comment.user.username}}</em></b>:{{comment.comment}}
                         {% endfor %}
+
+                        {% for likes in post.likes %}
 
                     </div>
 
