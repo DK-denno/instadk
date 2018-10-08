@@ -25,10 +25,21 @@
 
 
             <img src="{{post.image.url}}" style="text-align: center;" alt="" width="570px" height="570px">
-            <p style="font-size:40px"><i class="fa fa-heart" style="font-size:30px;"></i> <i class="fa fa-comment"
-                    style="font-size:30px;"></i></p>
-            <p class="card-text">{{post.caption}}</p>
+            <p style="font-size:40px">
+                <form action="/like/{{post.id}}" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
 
+                {% bootstrap_form like %}
+                <button type='submit'>
+                        <i class="fa fa-heart" type='submit' style="font-size:30px;">{{post.likes.all|length}}</i>
+
+                </button>
+               
+            </form>
+                 <i class="fa fa-comment"
+                    style="font-size:30px;"> {{post.comments.all|length}}</i></p>
+            <p class="card-text">{{post.caption}}</p>
+                <small>posted<em><b>:{{post.postedon|timesince}}</b> ago</em></small>
             <br>
 
             <form id='comment' action="/comment/{{post.id}}" method="post" enctype="multipart/form-data">
@@ -44,10 +55,13 @@
                 
                 
             </form>
+            <div style='margin-left: 20px;' >
+              <br>
             {% for comment in post.comments.all %}
-            <b><em>{{comment.user.username}}</em></b>:{{comment.comment}}
+            <b><em><a href='{{comment.user.username}}'>{{comment.user.username}}</a></em></b>:{{comment.comment}}
+            <br>
             {% endfor %}
-
+        </div>
             {% for likes in post.likes.all %}
             liked by <h1>{{likes.user.username}}</h1> and
             {% endfor %}
