@@ -139,6 +139,7 @@ def comment(request,id):
             comment.save()
             return redirect('index')
     return redirect('index')
+
 @login_required(login_url='/auth/login')
 def likes(request,id):
     likes=Posts.objects.get(id=id)

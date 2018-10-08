@@ -1,80 +1,76 @@
 {% extends 'base2.html' %}
 {% load bootstrap4 %}
 {% block content %}
-<div class='container'>
-    <div class='row'>
 
-        <div class='col-md-4 col-xs-4 col-sm-4'>
-
-            {% for post in post %}
+<div class="row">
 
 
-            <div class='col-md-4'>
-                <div class="card" style="width: 35rem;">
-                    <div class='card-header'>
-                        {% if post.profile.dp %}
-                        <a href='/prof/{{post.user.id}}/'>
-                        <img id="prof"style="border-radius: 100% ; padding: 0.15rem;  width: 50px; background: linear-gradient(to left bottom, #ab1a4b, #c93c48, #e15e43, #f3813f, #ffa63e);" src="{{post.profile.dp.url}}" width="50" height="50" alt="Card image cap">
-                        {{post.user.username}}</a>
-                        {% else %}
-                        <a href='/prof/{{post.user.id}}/'>
-                            <img id="prof"style="border-radius: 100% ; padding: 0.15rem;  width: 50px; background: linear-gradient(to left bottom, #ab1a4b, #c93c48, #e15e43, #f3813f, #ffa63e);" src="https://www.w3schools.com/howto/img_avatar.png" width="50" height="50" alt="Card image cap">
-                            {{post.user.username}}</a>
+    <div class='col-md-4 col-xs-4 col-sm-4'>
+        {% for post in post %}
 
-                        {% endif %}
-                    </div>
+        <div class="card" id='{{post.id}}'style="width: 36rem;">
 
 
-                    <img src="{{post.image.url}}" style="width: 35rem;" alt="">
-                    <div class='down' style="padding:20px;">
-                        <p class="card-text">{{post.caption}}</p>
-                        <br>
-                        <input type="button" id='comm' value="Comment">
-                        <form id='comment' action="/comment/{{post.id}}" method="post" enctype="multipart/form-data">
-                            {%csrf_token%}
-                    
-                            {% bootstrap_form comm %}
-                            <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
-                        </form>
-                        <form action="/like/{{post.id}}" method="post" enctype="multipart/form-data">
-                            {%csrf_token%}
-                    
-                            {% bootstrap_form like %}
-                            <input type="submit" class="btn btn-primary btn-lg" value="like">
-                        </form>
-                        {% for comment in post.comments.all %}
-                        <b><em>{{comment.user.username}}</em></b>:{{comment.comment}}
-                        {% endfor %}
+            {% if post.profile.dp %}
+            <a href='/prof/{{post.user.id}}/'>
+                <img id="prof" style="" src="{{post.profile.dp.url}}" width="50" height="50" alt="Card image cap">
+                {{post.user.username}}</a>
+            {% else %}
+            <a href='/prof/{{post.user.id}}/'>
+                <img id="prof" style="" src="">
+                {{post.user.username}}</a>
 
-                        {% for likes in post.likes.all %}
-                        liked by <h1>{{likes.user.username}}</h1> and 
-                        {% endfor %}
-                    </div>
+            {% endif %}
 
 
 
-                </div>
-            </div>
-            <br>
+            <img src="{{post.image.url}}" style="text-align: center;" alt="" width="570px" height="570px">
+            <p style="font-size:40px"><i class="fa fa-heart" style="font-size:30px;"></i> <i class="fa fa-comment"
+                    style="font-size:30px;"></i></p>
+            <p class="card-text">{{post.caption}}</p>
+
             <br>
 
-            {% endfor %}
-        </div>
-        <div class="col-md-4"></div>
-        <div class='col-md-4 col-xs-4 col-sm-4'>
-           
+            <form id='comment' action="/comment/{{post.id}}" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+
+                {% bootstrap_form comm %}
+                <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
+            </form>
+            <form action="/like/{{post.id}}" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+
+                {% bootstrap_form like %}
                 
-            </div>
+                
+            </form>
+            {% for comment in post.comments.all %}
+            <b><em>{{comment.user.username}}</em></b>:{{comment.comment}}
+            {% endfor %}
+
+            {% for likes in post.likes.all %}
+            liked by <h1>{{likes.user.username}}</h1> and
+            {% endfor %}
+
+
 
         </div>
+
+        <br>
+        <br>
+
+        {% endfor %}
     </div>
+</div>
+
+
 <script>
-        $(document).ready(function(){
-            $("#comm").click(function() {
-                alert("This is a paragraph.");
-      });
-    
+    $(document).ready(function () {
+        $("#comm").click(function () {
+            alert("This is a paragraph.");
+        });
+
     });
 </script>
-    {% endblock %}
-   
+
+{% endblock %}
