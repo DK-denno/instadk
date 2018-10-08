@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = 'index'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Application definition
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,3 +138,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'dennisveer27@gmail.com'
 EMAIL_HOST_PASSWORD = 'Dennisveer27'
 EMAIL_PORT = 587
+
+django_heroku.settings(locals())
