@@ -15,7 +15,7 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-
+@login_required(login_url='/auth/login')
 def index(request):
     post = Posts.objects.all()
     comm = Comments()
@@ -57,7 +57,7 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'reg.html', {'form': form})
-
+@login_required(login_url='/auth/login')
 def profile(request):
     form = PostForm()
     prof_form=Prof()
@@ -84,7 +84,7 @@ def profile(request):
     return render(request,'profile/profile.html',{"pics":posts,"profile":profile,"prof":prof_form,"form":form})
         
 
-
+@login_required(login_url='/auth/login')
 def profiles(request,id):
     profile = Profile.objects.get(user_id=id)
     print(profile.user)
@@ -127,7 +127,7 @@ def follow(request,operation,id):
         Follow.unfollow(request.user,user)
         return redirect('index')
 
-
+@login_required(login_url='/auth/login')
 def comment(request,id):
     post = Posts.objects.get(id=id)
     if request.method == 'POST':
@@ -139,7 +139,7 @@ def comment(request,id):
             comment.save()
             return redirect('index')
     return redirect('index')
-
+@login_required(login_url='/auth/login')
 def likes(request,id):
     likes=Posts.objects.get(id=id)
     if request.method == 'POST':
