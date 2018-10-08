@@ -12,9 +12,16 @@
             <div class='col-md-4'>
                 <div class="card" style="width: 35rem;">
                     <div class='card-header'>
+                        {% if post.profile.dp %}
                         <a href='/prof/{{post.user.id}}/'>
                         <img id="prof"style="border-radius: 100% ; padding: 0.15rem;  width: 50px; background: linear-gradient(to left bottom, #ab1a4b, #c93c48, #e15e43, #f3813f, #ffa63e);" src="{{post.profile.dp.url}}" width="50" height="50" alt="Card image cap">
                         {{post.user.username}}</a>
+                        {% else %}
+                        <a href='/prof/{{post.user.id}}/'>
+                            <img id="prof"style="border-radius: 100% ; padding: 0.15rem;  width: 50px; background: linear-gradient(to left bottom, #ab1a4b, #c93c48, #e15e43, #f3813f, #ffa63e);" src="https://www.w3schools.com/howto/img_avatar.png" width="50" height="50" alt="Card image cap">
+                            {{post.user.username}}</a>
+
+                        {% endif %}
                     </div>
 
 
@@ -22,7 +29,7 @@
                     <div class='down' style="padding:20px;">
                         <p class="card-text">{{post.caption}}</p>
                         <br>
-                        <input type="button" value="Comment">
+                        <input type="button" id='comm' value="Comment">
                         <form id='comment' action="/comment/{{post.id}}" method="post" enctype="multipart/form-data">
                             {%csrf_token%}
                     
