@@ -18,7 +18,7 @@
                 <h2> {{profile.user.username}}</h2>
             </div><br>{% autoescape on %}<br>{{profile.bio|safe}}
             {% endautoescape %}
-            <div class="col-md-4"> <button data-toggle="modal" data-target="#mode">Edit Profile</button>htsre<a class="fas fa-cog" data-toggle="modal" data-target="#account"  ></a>
+            <div class="col-md-4"><a class="fas fa-cog" data-toggle="modal" data-target="#account"  ></a>
             </div>
 
         </div>
@@ -172,8 +172,9 @@
     
                 </div>
                 <div class="modal-body">
-                    <a href="/auth/password/change/">Change password</a>
-                    <a href="/logout">Logout</a>
+                    <a href="/auth/password/change/">Change password</a><br>
+                    <a href="/logout">Logout</a><br>
+                    <s data-toggle="modal" data-target="#mode">Edit profile</a><br>
     
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
