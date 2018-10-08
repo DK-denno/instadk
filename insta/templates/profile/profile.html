@@ -9,7 +9,7 @@
         {% if profile.dp %}
         <img src="{{profile.dp.url}}" id="prof" width='250' height='250' alt="">
         {% else %}
-        <img src="https://www.w3schools.com/howto/img_avatar.png" id="prof" alt="">
+        <img src="https://www.w3schools.com/howto/img_avatar.png" width='250' height='250'  id="prof" alt="">
         {% endif %}
     </div>
     <div class="col-md-8">
@@ -18,7 +18,7 @@
                 <h2> {{profile.user.username}}</h2>
             </div><br>{% autoescape on %}<br>{{profile.bio|safe}}
             {% endautoescape %}
-            <div class="col-md-4"> <button data-toggle="modal" data-target="#mode">Edit Profile</button>htsre<a class="fas fa-cog" style ></a>
+            <div class="col-md-4"> <button data-toggle="modal" data-target="#mode">Edit Profile</button>htsre<a class="fas fa-cog" data-toggle="modal" data-target="#account"  ></a>
             </div>
 
         </div>
@@ -161,5 +161,27 @@
     </div>
 
 </div>
-
+<div class="modal fade" id="account" role="dialog">
+        <div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+    
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    
+                </div>
+                <div class="modal-body">
+                    <a href="/accounts/password/change/">Change password</a>
+                    <a href="/logout">Logout</a>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    
+    </div>
 {% endblock %}
