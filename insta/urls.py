@@ -13,7 +13,8 @@ urlpatterns=[
         views.activate, name='activate'),
     url(r'^follow/(?P<operation>.+)/(?P<id>\d+)',views.follow,name='follow'),
     url(r'^comment/(\d+)',views.comment,name='comment'),
-    url(r'^like/(\d+)',views.likes,name='likes')
+    url(r'^like/(\d+)',views.likes,name='likes'),
+    url(r'^search',views.search_results,name='search_results'),
     
 ]
 if settings.DEBUG:
