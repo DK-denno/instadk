@@ -68,7 +68,7 @@ class Comments(models.Model):
     comment=models.CharField(max_length=200)
 
 class Likes(models.Model):
-    user = models.OneToOneField(User,related_name='l_user',unique=True)
+    user = models.OneToOneField(User,related_name='l_user')
     post=models.ForeignKey(Posts,related_name='likes')
     like=models.CharField(max_length=3,default='1')
      
