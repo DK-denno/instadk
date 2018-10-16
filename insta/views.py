@@ -38,7 +38,7 @@ def signup(request):
             profile = Profile(user=user)
             profile.save()
             current_site = get_current_site(request)
-            mail_subject = 'Activate your blog account.'
+            mail_subject = 'Activate your instagram account.'
             message = render_to_string('email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -173,3 +173,7 @@ def search_results(request):
     else:
         message = "You haven't searched for any user"
         return render(request, 'search.html',{"message":message})
+
+def one(request,id):
+    post = Posts.objects.get(id=id)
+    return render(request,'one.html',{"post":post})

@@ -15,6 +15,7 @@ urlpatterns=[
     url(r'^comment/(\d+)',views.comment,name='comment'),
     url(r'^like/(\d+)',views.likes,name='likes'),
     url(r'^search',views.search_results,name='search_results'),
+    url(r'^one/(\d+)',views.one,name="one")
     
 ]
 if settings.DEBUG:

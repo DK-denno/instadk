@@ -1,0 +1,16 @@
+[2018-10-14 14:51:47.947] [exthost] [info] extension host started
+[2018-10-14 14:51:47.965] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2018-10-14 14:51:47.966] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2018-10-14 14:51:47.972] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-10-14 14:51:47.972] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/dist/extension
+[2018-10-14 14:51:48.016] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-10-14 14:51:48.016] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/dist/main
+[2018-10-14 14:51:48.194] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-10-14 14:51:48.194] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2018-10-14 14:51:48.201] [exthost] [info] ExtensionService#_doActivateExtension vscode.search-rg {"startup":true,"activationEvent":"*"}
+[2018-10-14 14:51:48.201] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/search-rg/dist/extension
+[2018-10-14 14:51:48.206] [exthost] [info] eager extensions activated
+[2018-10-14 14:52:02.916] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
+[2018-10-14 14:52:02.916] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/html-language-features/client/dist/htmlMain
+[2018-10-14 15:27:06.170] [exthost] [info] ExtensionService#_doActivateExtension vscode.python {"startup":false,"activationEvent":"onLanguage:python"}
+[2018-10-14 15:27:06.170] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/python/out/pythonMain

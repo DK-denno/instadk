@@ -1,0 +1,59 @@
+{% extends 'base2.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="row">
+
+
+    <div class='col-md-4 col-xs-4 col-sm-4'>
+    
+
+        <div class="card" id='{{post.id}}'style="width: 36rem;">
+
+
+            {% if post.profile.dp %}
+            <a href='/prof/{{post.user.id}}/'>
+                <img id="prof" style="" src="{{post.profile.dp.url}}" width="50" height="50" alt="Card image cap">
+                {{post.user.username}}</a>
+            {% else %}
+            <a href='/prof/{{post.user.id}}/'>
+                <img id="prof" style=""  width="50" height="50" src="https://www.w3schools.com/howto/img_avatar.png">
+                {{post.user.username}}</a>
+
+            {% endif %}
+
+
+
+            <img src="{{post.image.url}}" style="text-align: center;" alt="" width="570px" height="570px">
+            <p style="font-size:40px">
+                
+            <p class="card-text">{{post.caption}}</p>
+                <small>posted<em><b>:{{post.postedon|timesince}}</b> ago</em></small>
+            <br>
+
+         
+            <div style='margin-left: 20px;' >
+              <br>
+            {% for comment in post.comments.all %}
+            <b><em><a href='{{comment.user.username}}'>{{comment.user.username}}</a></em></b>:{{comment.comment}}
+            <br>
+            {% endfor %}
+        </div>
+            {% for likes in post.likes.all %}
+            liked by <h1>{{likes.user.username}}</h1> and
+            {% endfor %}
+
+
+
+        </div>
+
+        <br>
+        <br>
+
+      
+    </div>
+</div>
+
+
+
+{% endblock %}
