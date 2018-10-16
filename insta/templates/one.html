@@ -31,6 +31,7 @@
                 <small>posted<em><b>:{{post.postedon|timesince}}</b> ago</em></small>
             <br>
 
+            <div class="col-md-4 col-sm-4 col-xs-4">
          
             <div style='margin-left: 20px;' >
               <br>
@@ -39,11 +40,12 @@
             <br>
             {% endfor %}
         </div>
-            {% for likes in post.likes.all %}
-            liked by <h1>{{likes.user.username}}</h1> and
-            {% endfor %}
+        {% for likes in post.likes.all %}
+        liked by <h3>{{likes.user.username}}</h3> and {{likes.user|length}} others
+        {% endfor %}
 
 
+        </div>
 
         </div>
 
