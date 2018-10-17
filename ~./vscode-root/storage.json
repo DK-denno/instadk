@@ -474,5 +474,25 @@
             "label": "Ctrl+Shift+B",
             "isNative": true
         }
+    },
+    "windowsState": {
+        "openedWindows": [],
+        "lastActiveWindow": {
+            "folderUri": {
+                "$mid": 1,
+                "fsPath": "/root/Documents/instadk",
+                "external": "file:///root/Documents/instadk",
+                "path": "/root/Documents/instadk",
+                "scheme": "file"
+            },
+            "backupPath": "/root/Documents/instadk/~./vscode-root/Backups/5c8c323b56eed01bafbfa485daeda3eb",
+            "uiState": {
+                "mode": 0,
+                "x": 0,
+                "y": 59,
+                "width": 1366,
+                "height": 709
+            }
+        }
     }
 }
