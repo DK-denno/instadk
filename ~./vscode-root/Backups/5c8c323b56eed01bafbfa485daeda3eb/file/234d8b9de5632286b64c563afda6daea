@@ -1,8 +1,11 @@
+file:///root/Documents/instadk/.env
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'lewismutum@gmail.com'
 EMAIL_HOST_PASSWORD = 'Dennisveer27#'
 EMAIL_PORT = 587
+
+
 
 SECRET_KEY='Dennisveer27'
 DEBUG=True
