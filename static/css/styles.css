@@ -41,15 +41,25 @@
 #prof {
   border-radius: 50%;
   size: 50%;
+
 }
-.overflowTest {
+.ex3 {
+  background-color: lightblue;
+  color: white;
+  padding: 15px;
+  width: 110%;
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid #ccc
+}
+/* .overflowTest {
   color: white;
   padding: 15px;
   width: 110%;
   height: 300px;
   overflow: scroll;
   border: 1px solid #ccc;
-}
+} */
 .img.img-thumbnail.rounded-circle.user{
   padding: 0.15rem;
   margin: 5px 5px 0px 5px;

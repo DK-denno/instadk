@@ -9,6 +9,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     dp =  models.ImageField(upload_to='images')
     bio = HTMLField(max_length=500)
+    email_confirmed = models.BooleanField(default=False)
 
     
     def save_profile(self):

@@ -18,9 +18,10 @@ from django.http import HttpResponse
 @login_required(login_url='/auth/login')
 def index(request):
     post = Posts.objects.all()
+    users = User.objects.all()
     comm = Comments()
     like = Likes()
-    return render(request,'index.html', {"post":post,"like":like,"comm":comm})
+    return render(request,'index.html', {"post":post,"like":like,"users":users,"comm":comm})
 
 
 
@@ -37,6 +38,7 @@ def signup(request):
             user = authenticate(username=username,email=email, password=raw_password)
             profile = Profile(user=user)
             profile.save()
+            user.is_active = False
             current_site = get_current_site(request)
             mail_subject = 'Activate your instagram account.'
             message = render_to_string('email.html', {
@@ -106,17 +108,17 @@ def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
+
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
+        user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.<a href="/auth/login">Login</a>')
+        return redirect('index')
     else:
-        return HttpResponse('Activation link is invalid!')
-
+        return HttpResponse("Not Activated")
 
 def follow(request,operation,id):
     user=User.objects.get(id=id)   
