@@ -38,7 +38,7 @@ def signup(request):
             user = authenticate(username=username,email=email, password=raw_password)
             profile = Profile(user=user)
             profile.save()
-            user.is_active = False
+            user.is_active = True
             current_site = get_current_site(request)
             mail_subject = 'Activate your instagram account.'
             message = render_to_string('email.html', {
@@ -51,8 +51,8 @@ def signup(request):
             email = EmailMessage(
                         mail_subject, message, to=[to_email]
             )
-            email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+            #email.send()
+            #return HttpResponse('Please confirm your email address to complete the registration')
 
             login(request,user)
             return redirect('index')
