@@ -8,7 +8,7 @@
 
         <div class="col-md4">
             {% if profile.dp %}
-            <img src="{{profile.dp.url}}" id="prof" width='200' height='200' alt="">
+            <img src="{{profile.dp.cdn_url}}" id="prof" width='200' height='200' alt="">
             {% else %}
             <img src="https://www.w3schools.com/howto/img_avatar.png" width='200' height='200' id="prof" alt="">
 
@@ -60,7 +60,7 @@
                         <p class="card-text">{{post.caption}}</p> -->
                 </div>
 
-                <a href='/#{{post.id}}'><img src="{{post.image.url}}" width="350px" height="350px" alt=""></a>
+                <a href='/#{{post.id}}'><img src="{{post.image.cdn_url}}" width="350px" height="350px" alt=""></a>
                 <!-- <div class='card-footer'>
                         posted {{post.postedon|timesince}} ago
                     </div> -->

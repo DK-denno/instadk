@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime as dt
+from pyuploadcare.dj.models import ImageField
 from tinymce.models import HTMLField
 # Create your models here.
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
-    dp =  models.ImageField(upload_to='images')
+    dp = ImageField(blank=True, manual_crop="")
     bio = HTMLField(max_length=500)
     email_confirmed = models.BooleanField(default=False)
 
@@ -24,7 +25,7 @@ class Profile(models.Model):
 class Posts(models.Model):
     user = models.ForeignKey(User)
     caption = models.CharField(max_length=250)
-    image = models.ImageField(upload_to='posts')
+    image = ImageField(blank=True, manual_crop="")
     postedon = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(Profile,null=True)
     

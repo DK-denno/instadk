@@ -2,44 +2,33 @@
 {% load bootstrap4 %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <!-- Empty div -->
-        <div class="col-md-4"></div>
-        <div class="col-md-4 col-xs-4 col-sm-4" >
-            <div class="panel panel-default"style="align-self: center;">
 
-                
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
 
-                <div class="header" style="margin-left: 10%;">
-                    <img src="https://i.imgur.com/zqpwkLQ.png" />
-                </div>
-               
-                <div class="panel-body">
-
-                    <form action="/sign/" style="width: 100%;" method="post">
-                        {% csrf_token %}
-                        {% bootstrap_form form%}
-
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-sm" value="Create account">
-                        </div>
-
-                        <input type="hidden" name="next" value="{{next}}">
-                      
-
-                    </form>
-
-                </div>
-                <a href='/auth/login' style="color:blue" >Login</a>
-
-            </div>
-
-        </div>
-        <div class="col-md-4"></div>
-        <!-- empty div -->
+<div id="wrapper">
+  <div class="main-content" width="500px" >
+    <div class="header" style="margin-right: 100px;" >
+      <img src="https://i.imgur.com/zqpwkLQ.png" />
     </div>
+    <br>
+  <form action="{% url 'signup' %}" method="POST">
+      {% csrf_token %}
+        <div class="l-part">
+            <form action="" method="post">
+                {% bootstrap_form form %}
+                    <br>
+                    <input type="submit" id="go" value="Create Account" class="btn" />
+               </form>
+            </div>
+  </form>
+  </div>
+  <div class="sub-content">
+    <div class="s-part">
+      Already have an account?<a href="/auth/login"> Log in</a>
+    </div>
+  </div>
 </div>
+
 
 
 {% endblock %}

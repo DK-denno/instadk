@@ -38,6 +38,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 INSTALLED_APPS = [
     'insta',
     'grappelli',
+    'pyuploadcare.dj',
     'tinymce',
     'bootstrap4',
     'django.contrib.admin',
@@ -77,6 +78,12 @@ TEMPLATES = [
         },
     },
 ]
+
+UPLOADCARE = {
+    'pub_key':config('pub_key'),
+    'secret': config('secret'),
+}
+
 
 WSGI_APPLICATION = 'instadk.wsgi.application'
 
